@@ -1,0 +1,7 @@
+INSERT INTO locatario(nome, rua, numero, bairro,cidade_id, telefone1, telefone2, tipo) VALUES ('Maria Silva','Rua Flores',1234,'Redenção',1,81798160,null,1)
+INSERT INTO locatario(nome, rua, numero, bairro,cidade_id, telefone1, telefone2, tipo) VALUES ('Kappel Imóveis','Rua 
+Julio de Castilhos',444,'Centro',1,37412525,9854712,2)
+
+INSERT INTO pessoa_fisica( cpf, rg, locatario_id) VALUES (123456789,215487,3)
+
+INSERT INTO pessoa_juridica(cnpj, razao_social, locatario_id) VALUES (21452145,'Kappel Imóveis LTDA',4)

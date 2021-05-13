@@ -1,0 +1,84 @@
+INSERT INTO registro_vendas(ID_NF, ID_ITEM, COD_PROD, VALOR_UNIT, QUANTIDADE, DESCONTO) VALUES (1,1,1,25,10,5),(1,2,2,13.5,3,NULL),(1,3,3,15,2,NULL),(1,4,4,10,1,NULL),(1,5,5,30,1,NULL),(2,1,3,15,4,NULL),(2,2,4,10,5,NULL),(2,3,5,30,7,NULL),(3,1,1,25,5,NULL),(3,2,4,10,4,NULL),(3,3,5,30,5,NULL),(3,4,2,13.5,7,NULL),(4,1,5,30,10,15),(4,2,4,10,12,5),(4,3,1,25,13,5),(4,4,2,13.5,15,5),(5,1,3,15,3,NULL),(5,2,5,30,6,NULL),(6,1,1,25,22,15),(6,2,3,15,25,20),(7,1,1,25,10,3),(7,2,2,13.5,10,4),(7,3,3,15,10,4),(7,4,5,30,10,1);
+
+a) 
+SELECT 
+rv.ID_NF,
+rv.ID_ITEM,
+rv.COD_PROD,
+rv.VALOR_UNIT
+FROM registro_vendas rv
+WHERE rv.DESCONTO is null;
+
+b)
+SELECT
+rv.ID_NF,
+rv.ID_ITEM,
+rv.COD_PROD,
+rv.VALOR_UNIT,
+rv.VALOR_UNIT-(rv.VALOR_UNIT*(rv.DESCONTO/100)) AS VALOR_VENDIDO
+FROM registro_vendas rv
+WHERE rv.DESCONTO is not null;
+
+c)
+UPDATE registro_vendas 
+SET DESCONTO=0
+WHERE DESCONTO is NULL;
+
+d)
+SELECT
+rv.ID_NF,
+rv.ID_ITEM,
+rv.COD_PROD,
+rv.VALOR_UNIT,
+(rv.VALOR_UNIT-(rv.VALOR_UNIT*(rv.DESCONTO/100))) * rv.QUANTIDADE AS VALOR_TOTAL,
+rv.DESCONTO,
+rv.VALOR_UNIT-(rv.VALOR_UNIT*(rv.DESCONTO/100)) AS VALOR_VENDIDO
+FROM registro_vendas rv;
+
+e)
+SELECT
+rv.ID_NF,
+sum(rv.QUANTIDADE * rv.VALOR_UNIT) as VALOR_TOTAL
+FROM registro_vendas rv
+ORDER BY VALOR_TOTAL DESC;
+
+f)
+SELECT
+rv.ID_NF,
+rv.VALOR_UNIT-(rv.VALOR_UNIT*(rv.DESCONTO/100)) AS VALOR_VENDIDO
+FROM registro_vendas rv
+GROUP BY rv.ID_NF
+ORDER BY (rv.QUANTIDADE*rv.VALOR_UNIT) DESC;
+
+g)
+SELECT
+rv.COD_PROD,
+MAX(rv.QUANTIDADE)
+FROM registro_vendas rv;
+
+h)
+SELECT
+rv.ID_NF,
+rv.COD_PROD,
+rv.QUANTIDADE
+FROM registro_vendas rv
+WHERE rv.QUANTIDADE>10;
+
+i)
+SELECT
+rv.ID_NF,
+SUM(rv.QUANTIDADE*rv.VALOR_UNIT) AS VALOR_TOTAL
+FROM registro_vendas rv
+GROUP BY ID_NF
+HAVING VALOR_TOTAL > 500
+ORDER BY VALOR_TOTAL DESC;
+
+j)
+select COD_PROD,avg(DESCONTO) from registro_vendas group by COD_PROD;
+
+k)
+select COD_PROD, min(DESCONTO) AS MENOR,max(DESCONTO) AS MAIOR,avg(DESCONTO)AS MEDIA from registro_vendas GROUP by COD_PROD;
+
+l)
+select ID_NF,count(QUANTIDADE) as QTD_ITENS from registro_vendas group by ID_NF having QTD_ITENS>3;
+

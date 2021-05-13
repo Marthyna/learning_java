@@ -1,0 +1,1 @@
+select p.nome_produto,p.preco_produto,p.tipo_produto,v.data from produto p,venda v where p.produto_id = v.produto_id;

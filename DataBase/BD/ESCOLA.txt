@@ -1,0 +1,10 @@
+INSERT INTO aluno(nome) VALUES ('PEDRO'),('MARIA'),('MANUEL'),('GABRIEL');
+
+INSERT INTO professor(nome) VALUES ('LUCAS'),('JULIANA');
+
+INSERT INTO disciplina(nome, professor_id) VALUES ('MATEMÁTICA',2),('ARTES',1);
+
+INSERT INTO disciplina_aluno(aluno_id, disciplina_id) VALUES (1,2),(2,2),(3,2),(4,2),(3,1),(2,1);
+
+SELECT disciplina.nome AS DISCIPLINA,aluno.nome AS ALUNO FROM disciplina,aluno,disciplina_aluno WHERE
+disciplina_aluno.aluno_id = aluno.aluno_id AND disciplina_aluno.disciplina_id = disciplina.disciplina_id;

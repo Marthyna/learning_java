@@ -1,0 +1,22 @@
+SELECT *
+FROM projeto;
+
+SELECT pessoa.nome
+FROM pessoa,participacao
+WHERE participacao.pessoa_id = pessoa.pessoa_id
+GROUP BY participacao.pessoa_id;
+
+SELECT pessoa.nome
+FROM pessoa,participacao
+WHERE participacao.pessoa_id = pessoa.pessoa_id AND participacao.funcao = 'Orientador'
+GROUP BY pessoa.pessoa_id;
+
+SELECT pessoa.nome
+FROM pessoa,participacao
+WHERE participacao.pessoa_id = pessoa.pessoa_id AND participacao.funcao = 'Participante'
+GROUP BY pessoa.pessoa_id;
+
+SELECT projeto.nome_projeto
+FROM projeto,participacao
+WHERE participacao.projeto_id = projeto.projeto_id
+GROUP BY participacao.projeto_id HAVING COUNT(pessoa_id)>1;

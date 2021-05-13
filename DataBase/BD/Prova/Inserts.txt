@@ -1,0 +1,11 @@
+INSERT INTO pessoa(nome, identidade, especializacao) VALUES ('Eloísa',010101,'Licenciatura em Matemática'),('Marthyna',020202,'Técnico em Informática'),('Marina',030303,'Técnico em Secretariado');
+
+INSERT INTO pessoa(nome, identidade, especializacao) VALUES ('Mariana',040404,'Técnico em Refrigeração'),('Lucas',050505,'Técnico em Informática');
+
+INSERT INTO projeto(nome_projeto, numero, data_inicio, data_final, valor) VALUES ('O Controle Legal: Educação Financeira e Fiscal',111111,'2015-03-03','2016-05-31',1200);
+
+INSERT INTO projeto(nome_projeto, numero, data_inicio, data_final, valor) VALUES ('Naturvitta: Crescendo com Saúde',222222,'2017-03-03','2017-11-30',100),('ECOBÓTICA',333333,'2017-02-17','2018-11-24',2500);
+
+INSERT INTO participacao(pessoa_id, projeto_id, funcao, horas) VALUES (1,1,'Orientador',600),(2,1,'Participante',300),(3,1,'Participante',120);
+
+INSERT INTO participacao(pessoa_id, projeto_id, funcao, horas) VALUES (1,2,'Orientador',900),(2,2,'Participante',300),(4,2,'Participante',120),(5,3,'Orientador',300),(3,3,'Participante',600);
